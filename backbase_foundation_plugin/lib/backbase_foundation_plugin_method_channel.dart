@@ -10,17 +10,7 @@ class MethodChannelBackbaseFoundationPlugin extends BackbaseFoundationPluginPlat
   final methodChannel = const MethodChannel('backbase_foundation_plugin');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
-  }
-
-  @override
-  Future<String?> authenticate(String username, String password) async {
-    return await methodChannel.invokeMethod<String>('authenticate', {"username": username, "password": password});
-  }
-  @override
-  Future<String?> enterPasscode(String passcode) async {
-    return await methodChannel.invokeMethod<String>('enterPasscode', {"passcode": passcode});
+  Future<String?> getToken() async {
+    return await methodChannel.invokeMethod<String>('getToken');
   }
 }

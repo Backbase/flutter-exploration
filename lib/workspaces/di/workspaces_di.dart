@@ -1,3 +1,4 @@
+import 'package:backbase_foundation_plugin/backbase_foundation_plugin.dart';
 import 'package:generated_services/api.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobile_foundation_headless_flutter/core/domain/storage_service.dart';
@@ -19,7 +20,11 @@ void setupWorkspacesModule() {
   getIt.registerLazySingleton<WorkspacesRepository>(
       () => WorkspacesRepositoryImpl(getIt.get<WorkspacesDataSource>()));
   getIt.registerFactory<GetWorkSpacesUseCase>(
-      () => GetWorkSpacesUseCase(getIt.get<WorkspacesRepository>(),getIt.get<StorageService>(),getIt.get<UseCaseConfig>()));
+      () => GetWorkSpacesUseCase(
+          getIt.get<WorkspacesRepository>(),
+          getIt.get<BackbaseFoundationPlugin>(),
+          getIt.get<UseCaseConfig>()
+      ));
   getIt.registerFactory<SelectWorkspaceUseCase>(
       () => SelectWorkspaceUseCase(getIt.get<WorkspacesRepository>()));
   getIt.registerFactory<WorkspacesViewModel>(() => WorkspacesViewModel(

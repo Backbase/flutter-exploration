@@ -23,14 +23,7 @@ abstract class BackbaseFoundationPluginPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    return _instance.getPlatformVersion();
-  }
-  Future<String?> authenticate(String username,String password) async{
-    return await _instance.authenticate(username,password);
-  }
-
-  Future<String?> enterPasscode(String passcode) {
-    return _instance.enterPasscode(passcode);
+  Future<String?> getToken() {
+    return _instance.getToken();
   }
 }

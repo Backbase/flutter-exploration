@@ -12,13 +12,9 @@ import 'package:mobile_foundation_headless_flutter/core/domain/storage_service.d
 import 'package:mobile_foundation_headless_flutter/core/domain/use_case_config.dart';
 import 'package:mobile_foundation_headless_flutter/workspaces/di/workspaces_di.dart';
 
-import '../login/di/login_di.dart';
-import '../passcode/di/passcode_di.dart';
 
 void setupAppModules() {
   setupAppModule();
-  setupLoginModule();
-  setupPasscodeModule();
   setupWorkspacesModule();
 }
 
