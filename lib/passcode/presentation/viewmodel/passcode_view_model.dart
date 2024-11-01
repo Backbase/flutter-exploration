@@ -12,9 +12,7 @@ class PasscodeViewModel extends ViewModel<PasscodeScreenState, PasscodeEvent> {
   final SetPasscodeUseCase _setPasscodeUseCase;
   final ConfirmPasscodeUseCase _confirmPasscodeUseCase;
   late PasscodeScreenMode mode;
-
-  PasscodeViewModel(this._setPasscodeUseCase, this._confirmPasscodeUseCase)
-      : super(PasscodeScreenState());
+  PasscodeViewModel(this._setPasscodeUseCase, this._confirmPasscodeUseCase): super(PasscodeScreenState());
 
   PasscodeScreenState get currentState => state;
 
@@ -30,12 +28,10 @@ class PasscodeViewModel extends ViewModel<PasscodeScreenState, PasscodeEvent> {
       case PasscodeVerify():
     }
   }
-
   void _digitDeleted() {
-    if (state.onScreenPasscode.isNotEmpty) {
+    if(state.onScreenPasscode.isNotEmpty){
       var newState = state.clone();
-      newState.onScreenPasscode = newState.onScreenPasscode
-          .substring(0, newState.onScreenPasscode.length - 1);
+      newState.onScreenPasscode =newState.onScreenPasscode.substring(0, newState.onScreenPasscode.length - 1);
       emit(newState);
     }
   }
@@ -45,6 +41,7 @@ class PasscodeViewModel extends ViewModel<PasscodeScreenState, PasscodeEvent> {
       var newState = state.clone();
       newState.onScreenPasscode += digit;
       emit(newState);
+
     }
     if (state.onScreenPasscode.length != 5) {
       return;
@@ -56,7 +53,7 @@ class PasscodeViewModel extends ViewModel<PasscodeScreenState, PasscodeEvent> {
       var newState = state.clone();
       newState.navigation = NavigationAction.navigateToConfirmation;
       emit(newState);
-      newState = newState.clone();
+      newState=newState.clone();
       newState.reset();
       emit(newState);
     }
@@ -64,12 +61,11 @@ class PasscodeViewModel extends ViewModel<PasscodeScreenState, PasscodeEvent> {
 
   Future<void> _confirmPasscode() async {
     PasscodeScreenState newState = _showLoading();
-    Result<Empty, PasscodeErrors> result =
-        await _confirmPasscodeUseCase(state.onScreenPasscode);
+    Result<Empty, PasscodeErrors> result =await _confirmPasscodeUseCase(state.onScreenPasscode);
     newState.clone();
     newState.clearLoading();
     emit(newState);
-    newState = newState.clone();
+    newState=newState.clone();
     switch (result) {
       case Success<Empty, PasscodeErrors>():
         newState.navigation = NavigationAction.exit;
@@ -81,9 +77,10 @@ class PasscodeViewModel extends ViewModel<PasscodeScreenState, PasscodeEvent> {
   }
 
   PasscodeScreenState _showLoading() {
-    var newState = state.clone();
+     var newState = state.clone();
     newState.enableLoading();
     emit(newState);
     return newState;
   }
+
 }

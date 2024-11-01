@@ -2,12 +2,10 @@ import 'package:mobile_foundation_headless_flutter/passcode/domain/repo/passcode
 
 import '../../../core/domain/storage_service.dart';
 
+
 class SetPasscodeUseCase {
-  final PasscodeRepository repo;
   final StorageService storageService;
-
-  SetPasscodeUseCase(this.repo, this.storageService);
-
+  SetPasscodeUseCase(this.storageService);
   Future<void> call(String passcode) async {
     await storageService.writePasscode(passcode);
   }

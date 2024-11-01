@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:backbase_foundation_plugin/backbase_foundation_plugin.dart';
 import 'package:generated_services/api.dart';
 import 'package:get_it/get_it.dart';
 import 'package:http/io_client.dart';
@@ -23,28 +24,21 @@ void setupAppModules() {
 
 void setupAppModule() {
   GetIt getIt = GetIt.instance;
-
-  var identity = ApiClient(
-      basePath: 'https://identity.stg.sdbxaz.azure.backbaseservices.com');
+  getIt.registerFactory<BackbaseFoundationPlugin>(
+      () => BackbaseFoundationPlugin());
   var application =
-      ApiClient(basePath: 'https://app.stg.sdbxaz.azure.backbaseservices.com');
+  ApiClient(basePath: 'https://app.stg.sdbxaz.azure.backbaseservices.com');
 
   /// enable proxy on android
   //addProxyProxyClient([identity, application]);
 
   getIt.registerLazySingleton<UseCaseConfig>(
-    () => UseCaseConfig(
-
-    ),
+    () => UseCaseConfig(),
   );
-  getIt.registerLazySingleton<ApiClient>(() => identity,
-      instanceName: "identity");
   getIt.registerLazySingleton<ApiClient>(() => application,
       instanceName: "application");
-
   getIt.registerLazySingleton<LocalRepository>(
       () => LocalRepositoryImpl(InMemoryStorageImpl(), SecureStorageImpl()));
-
   getIt.registerFactory<StorageService>(
       () => StorageService(getIt.get<LocalRepository>()));
 }

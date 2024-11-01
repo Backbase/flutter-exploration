@@ -1,3 +1,1 @@
-class LoginEntity{
-
-}
+class LoginEntity {}

@@ -33,7 +33,7 @@ class _PasscodeScreenState extends State<PasscodeScreen> {
       body: BlocConsumer<PasscodeViewModel, PasscodeScreenState>(
         bloc: _viewModel,
         listener: (context, state) {
-          _handleNavigation(context, state);
+          _handleNavigation(context,state);
         },
         builder: (context, state) {
           String title = getTitleFromMode();

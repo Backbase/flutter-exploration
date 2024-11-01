@@ -135,7 +135,7 @@ class PasscodeContent extends StatelessWidget {
       null => "",
       PasscodeDoNotMatch() => "Passcode do not match, please try again",
       ConnectionError() => "Check if you have a working network connection",
-      DataNotFound() => "Unexpected error occurred, passcode not found",
+      DataNotFound() =>"Unexpected error occurred, passcode not found",
       UnExpectedError() => "Unexpected error occurred",
     };
   }

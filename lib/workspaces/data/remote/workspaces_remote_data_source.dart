@@ -21,6 +21,23 @@ class WorkspacesRemoteDataSource implements WorkspacesDataSource {
     );
     return Success(workspaceDTO.toEntity());
   }
+
+  Future<Result<List<Workspace>, WorkspacesError>> loadJson() async {
+    try {
+      final String source =
+          await rootBundle.loadString('assets/workspaces.json');
+      final List<dynamic> jsonArray =
+          List<dynamic>.from(await jsonDecode(source));
+
+      final List<Workspace> workspaces = List.empty(growable: true);
+      for (var jsonObject in jsonArray) {
+        workspaces.add(Workspace.fromJson(jsonObject));
+      }
+      return Success(workspaces);
+    } catch (e) {
+      return ResultError(UnExpectedError());
+    }
+  }
 }
 
 extension EntityMapper on List<service.Workspace>? {

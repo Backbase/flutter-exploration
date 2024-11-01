@@ -30,6 +30,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
+  backbase_foundation_plugin:
+    path: ./backbase_foundation_plugin
+
   get_it: ^7.6.7
   pointycastle: ^3.8.0
 #  cryptography: ^2.7.0
