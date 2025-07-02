@@ -25,9 +25,9 @@ void setupAppModule() {
   GetIt getIt = GetIt.instance;
 
   var identity = ApiClient(
-      basePath: 'https://identity.stg.sdbxaz.azure.backbaseservices.com');
+      basePath: 'https://identity.dev.sdbxaz.azure.backbaseservices.com');
   var application =
-      ApiClient(basePath: 'https://app.stg.sdbxaz.azure.backbaseservices.com');
+      ApiClient(basePath: 'https://app.dev.sdbxaz.azure.backbaseservices.com');
 
   /// enable proxy on android
   //addProxyProxyClient([identity, application]);

@@ -10,7 +10,7 @@ class UseCaseConfig {
   UseCaseConfig({
     this.apiKey= "ADD YOUR API KEY HERE",
     this.acrValues = "authentication",
-    this.realm = "customer",
+    this.realm = "retail",
     this.grantType = "password",
     this.clientId = "mobile-client",
     this.deviceKeyAlgorithm = "ALG_KEY_ECC_X962_DER",
