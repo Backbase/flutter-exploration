@@ -18,7 +18,10 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11.toString()
     }
-
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.backbase.flutter.headless.mobile_foundation_headless_flutter"
@@ -42,3 +45,17 @@ android {
 flutter {
     source = "../.."
 }
+dependencies {
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
+
+    implementation("io.insert-koin:koin-android:3.4.3")
+
+    val identityJourney = "6.0.0"
+    implementation("com.backbase.android.identity.journey:authentication-journey:$identityJourney")
+    implementation("com.backbase.android.identity.journey:identity-auth-client-1-authentication-use-case:$identityJourney")
+    implementation("com.backbase.android.sdk:backbase:10.0.3")
+    implementation("com.backbase.android.retail.journey:journey-common:5.1.0")
+    implementation("com.backbase.android.design:design-system:5.7.2")
+}
+
