@@ -2,6 +2,11 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven {
+            name = "backbaseRepo"
+            url = uri("https://repo.backbase.com/repo")
+            credentials(PasswordCredentials::class)
+        }
     }
 }
 

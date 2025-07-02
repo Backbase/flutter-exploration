@@ -18,6 +18,14 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven {
+            name = "backbaseRepo"
+            url "https://repo.backbase.com/repo"
+            credentials {
+                username = backbaseRepoUsername
+                password = backbaseRepoPassword
+            }
+        }
     }
 }
 

@@ -96,10 +96,10 @@ class BackbaseFoundationPlugin : FlutterPlugin, MethodCallHandler {
 
     private fun initializeBackbase(context: Context): Backbase {
         if (Backbase.getInstance() == null) {
-            if (BuildConfig.DEBUG) {
-                BBLogger.setLogLevel(BBLogger.LogLevel.DEBUG)
-                BBLogger.debug(TAG, "Facet ID: <${FidoUafFacetUtils.getFacetID(context)}>")
-            }
+//            if (BuildConfig.DEBUG) {
+//            BBLogger.setLogLevel(BBLogger.LogLevel.DEBUG)
+//            BBLogger.debug(TAG, "Facet ID: <${FidoUafFacetUtils.getFacetID(context)}>")
+//            }
             Backbase.initialize(context, "backbase/config.json", false)
             Backbase.requireInstance().getModel(
                 object : ModelListener<Model> {
