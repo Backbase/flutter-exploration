@@ -23,7 +23,7 @@ void setupAppModule() {
   getIt.registerFactory<BackbaseFoundationPlugin>(
       () => BackbaseFoundationPlugin());
   var application =
-  ApiClient(basePath: 'https://app.stg.sdbxaz.azure.backbaseservices.com');
+      ApiClient(basePath: 'https://app.dev.sdbxaz.azure.backbaseservices.com');
 
   /// enable proxy on android
   //addProxyProxyClient([identity, application]);
